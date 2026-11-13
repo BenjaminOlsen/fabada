@@ -1,0 +1,17 @@
+/* Independent Python model, cross-checked against the working lab implementation. */
+static const struct { size_t length; const char *hex; } boundary_vectors[] = {
+    {0, "236a8cf323afaa7aaa8b91e49fbe14c3ada8c051c1284ba1c23defbabfdc1fcb"},
+    {1, "7d135ef01ca3693fbd5e6d3d2882921678570680696331406caa3d8ccb4b7021"},
+    {23, "10a5e91acb29c9cd4504bdf43b008b6db864eca14a959bcc165e120c6b95f1fa"},
+    {24, "39325c52a1a73dfeda629a5d1249429078a7e5ae284b306071e1eac2dedea5e6"},
+    {31, "026b971b43f263baf39742d60457a1a1a5a90de65dfc3fab31a7692e6cb6d62c"},
+    {32, "c01958469ff2574972d2dd2f6fb452e567fe1128a8f934d559dc63b21a7301a3"},
+    {33, "c243234dc59cee324256ff9ed46074933c21a2c26d7a7582075378e5799cf067"},
+    {55, "1ad1cff12e7ae7cfe1fafebcf5df2ec26a650d5d40c956729be338b4247f6539"},
+    {56, "fca188808dc2a0b6a01cb1fb7ff9c72aa3e6c6f338815410f3ef6379c2f46450"},
+    {63, "f5f6317ddb451f4df8655a449cce296f9218e27232fadf782ceb60b9e75808da"},
+    {64, "b73663419bfb75937bafce2b3707737a821ba83b9a224911325390a95f7e624e"},
+    {65, "ecc97d37bcf5fe9e9421a44d48d4732b5473dc0a7baccf457a305acc45fbbe86"},
+    {193, "52e730f33c23f83193339a1a708c9902197758d4d844c2c4d556dc6afa8bb8da"},
+    {1024, "c738ce96f2d641f89cd2310aae7cebecba235890c56b513fc9af953a44565ff2"},
+};

@@ -1,0 +1,39 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -68,7 +68,7 @@
+      OR (CMAKE_CXX_COMPILER_ID STREQUAL Clang)
+      OR (CMAKE_CXX_COMPILER_ID STREQUAL Intel))
+ 
+-  if(NOT CMAKE_CROSSCOMPILING)
++  if(FABADA_NATIVE AND NOT CMAKE_CROSSCOMPILING)
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native")
+   endif()
+ 
+@@ -260,6 +260,8 @@
+ target_include_directories(SMHasher3 PUBLIC include/common PRIVATE util tests include/hashlib)
+ target_link_libraries(SMHasher3 SMHasher3Tests SMHasher3Hashlib ${threads_link_command})
+ 
++include("${FABADA_ROOT}/tests/smhasher3/targets.cmake")
++
+ ########################################
+ # Miscellany
+ ########################################
+@@ -268,7 +270,8 @@
+ add_custom_target(SMHasher3Version ${CMAKE_COMMAND}
+     -D SRC=${CMAKE_SOURCE_DIR}/version.h.in
+     -D DST=${CMAKE_BINARY_DIR}/include/version.h
+-    -D GIT_EXECUTABLE=${GIT_EXECUTABLE}
++    -D GIT_EXECUTABLE=
++    -D SMHASHER3_GIT_VERSION=45f870d7+fabada
+     -P ${CMAKE_SOURCE_DIR}/version.cmake
+ )
+ add_dependencies(SMHasher3 SMHasher3Version)
+--- a/hashes/Hashsrc.cmake
++++ b/hashes/Hashsrc.cmake
+@@ -93,3 +93,6 @@
+   hashes/gxhash.cpp
+   hashes/rust-rapidhash.cpp
+ )
++
++# This integration builds the full test runner with only Fabada registered.
++set(HASH_SRC_FILES hashes/fabada256.cpp)
